@@ -1,5 +1,5 @@
 function cifrar() {
-    var palavra = document.getElementById("inputt").value.toLowerCase();
+    var palavra = retirarAcento(document.getElementById("inputt").value.toLowerCase());
     var chave = document.getElementById("respp").value.toLowerCase();
     var alfabeto = "abcdefghijklmnopqrstuvwxyz";
     var numsim = '1234567890!@#$%¨&*()_+,./|';
@@ -89,4 +89,15 @@ function decifrar() {
     }
 
     document.getElementById("output").innerHTML = resultado;
+}
+
+    function retirarAcento(word) {
+    word = word.toLowerCase();
+    word = word.replace(new RegExp('[ÁÀÂÃ]', 'gi'), 'a');
+    word = word.replace(new RegExp('[ÉÈÊ]', 'gi'), 'e');
+    word = word.replace(new RegExp('[ÍÌÎ]', 'gi'), 'i');
+    word = word.replace(new RegExp('[ÓÒÔÕ]', 'gi'), 'o');
+    word = word.replace(new RegExp('[ÚÙÛ]', 'gi'), 'u');
+    word = word.replace(new RegExp('[Ç]', 'gi'), 'c');
+    return word;
 }
